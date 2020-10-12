@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { EtudiantsComponent } from './etudiants/etudiants.component';
 import { NewEtudiantComponent } from './new-etudiant/new-etudiant.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EtudiantsComponent,
-    NewEtudiantComponent
+    NewEtudiantComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
