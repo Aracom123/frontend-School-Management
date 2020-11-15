@@ -16,23 +16,6 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
 
-  /*public login(username:string, password:string){
-    let user;
-    this.users.forEach(u => {
-      if(u.username==username && u.password==password){
-        user = u;
-      }
-      if(user){
-        this.isAuthenticated = true;
-        this.userAuthenticated = user;
-      }
-      else{
-        this.isAuthenticated=false;
-        this.userAuthenticated = undefined;
-      }
-    });
-  }*/
-
   public loginUser(data){
     return this.http.post(this.hostlogin+"/login",data,{observe:'response'});
   }
@@ -49,7 +32,7 @@ export class AuthenticationService {
     this.login = objJWT.obj;
     this.roles = objJWT.role;
     console.log(this.login);
-    console.log(this.roles);
+    //console.log(this.roles);
   }
 
   isAdmin(){
@@ -79,5 +62,6 @@ export class AuthenticationService {
     this.jwt = undefined;
     this.login = undefined;
     this.roles = undefined;
+    
   }
 }

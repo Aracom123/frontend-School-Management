@@ -1,1 +1,112 @@
-<p>new-etudiant works!</p>
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="panel panel-default">
+        <div class="panel panel-heading">Nouveau étudiant</div>
+        <div class="panel-body" *ngIf="mode==1">
+
+            <form #f="ngForm" (ngSubmit)="onSaveEtudiant(f.value)">
+                <div class="form-group">
+                    <label class="control-label"> Nom</label>
+                    <input class="form-control" type="text" name="nom" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Prenom</label>
+                    <input class="form-control" type="text" name="prenom" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Telephone</label>
+                    <input class="form-control" type="text" name="telephone" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">titre</label>
+                    <input class="form-control" type="text" name="titre" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">E-Mail</label>
+                    <input class="form-control" type="text" name="email" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Matricule</label>
+                    <input class="form-control" type="text" name="matricule" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Diplome</label>
+                    <input class="form-control" type="text" name="diplome" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Date de Naissance</label>
+                    <input class="form-control" type="date" name="date_naissance" ngModel>
+                </div>
+
+                <div class="form-group" *ngIf="classes">
+                    <label class="control-label">Classe</label>
+                    <select class="form-control" name="classe" id="classe" ngModel>
+                        <option value="0">Select</option>
+                        <option *ngFor="let item of classes._embedded.classes" value="classValue/{{ item.id_classe}}">{{ item.id_classe}} - {{ item.libelle_classe }}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group ">
+                    <label class="control-label ">Creer Par</label>
+                    <input class="form-control " type="text " name="created_by_id " ngModel>
+                </div>
+
+                <div class="form-group ">
+                    <label class="control-label ">Modifier Par</label>
+                    <input class="form-control " type="text " name="modified_by_id " ngModel>
+                </div>
+
+                <div class="form-group" *ngIf="recuScolarite">
+                    <label class="control-label">Scolarite</label>
+                    <select class="form-control" name="scolarite" id="scolarite" ngModel>
+                        <option value="0">Select</option>
+                        <option *ngFor="let item of recuScolarite._embedded.scolarites" value="http://localhost:8080/scolarite/{{ item.id}}">
+                            {{ item.id}} - {{ item.somme }}
+                        </option>
+                    </select>
+                </div>
+
+                <button class="btn btn-success " type="submit ">Save</button>
+            </form>
+        </div>
+        <div class="panel-body " *ngIf="mode==2 ">
+            <button class="btn btn-success " (click)="onNewEtudiant() ">Nouveau étudiant</button>
+            <div class="form-group ">
+                <label>ID:</label><label>{{ currentEtudiant.id }}</label>
+            </div>
+            <div class="form-group ">
+                <label>Nom:</label><label>{{ currentEtudiant.nom }}</label>
+            </div>
+            <div class="form-group ">
+                <label>Prenom:</label><label>{{ currentEtudiant.prenom }}</label>
+            </div>
+            <div class="form-group ">
+                <label>date_naissance:</label><label>{{ currentEtudiant.date_naissance }}</label>
+            </div>
+            <div class="form-group ">
+                <label>Telephone:</label><label>{{ currentEtudiant.telephone }}</label>
+            </div>
+            <div class="form-group ">
+                <label>Email:</label><label>{{ currentEtudiant.email }}</label>
+            </div>
+            <div class="form-group ">
+                <label>Matricule:</label><label>{{ currentEtudiant.matricule }}</label>
+            </div>
+            <div class="form-group " *ngIf="currentEtudiant.classe">
+                <label>Classe : </label><label>  {{ currentEtudiant.classe.libelle_classe}}</label>
+            </div>
+
+            <div class="form-group " *ngIf="currentEtudiant.scolarite">
+                <label>Scolarite : </label><label> {{ currentEtudiant.scolarite.somme}}</label>
+            </div>
+        </div>
+    </div>
+
+</div>

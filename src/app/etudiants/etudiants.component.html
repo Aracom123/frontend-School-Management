@@ -1,35 +1,45 @@
-<button class="btn btn-primary" (click)="onGetEtudiants()">Etudiants</button>
-<form #f="ngForm" (ngSubmit)="onChercher(f.value)">
-  <div class="form-group">
-    <label for="">Keyword</label>
-    <input type="text" name="keyword" ngModel>
-    <button type="submit" class="btn btn-success">Chercher</button>
-  </div>
-</form>
-<table class="table table-striped" *ngIf="etudiants">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Prénom</th>
-        <th scope="col">Noms</th>
-        <th scope="col">Matricule</th>
-        <th scope="col">Téléphone</th>
-        <th scope="col">Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let e of etudiants._embedded.etudiants">
-        <th scope="row">{{e.id}}</th>
-        <td>{{e.nom}}</td>
-        <td>{{e.prenom}}</td>
-        <td>{{e.matricule}}</td>
-        <td>{{e.telephone}}</td>
-        <td>{{e.email}}</td>  
-     </tr>
-    </tbody>
-  </table>
-  <ul *ngIf="pages" class="nav nav-pills">
-    <li [ngClass]="i==currentPage?'active':''" *ngFor="let p of pages; let i=index"  class="clickable">
-      <a (click)="onGetPages(i)">{{ i }}</a>
-    </li>
-  </ul>
+<div class="col-md-10 col-sm-10 col-xs-12">
+    <div class="panel panel-primary">
+        <div class="panel panel-heading">Liste des étudiants</div>
+        <div class="panel-body">
+            <form #f="ngForm" (ngSubmit)="onChercher(f.value)">
+                <div class="form-group">
+                    <label for="">Keyword</label>
+                    <input type="text" name="keyword" ngModel>
+                    <button type="submit" class="btn btn-success">
+                <span class="glyphicon glyphicon-search"> Chercher</span> </button>
+                </div>
+            </form>
+            <table class="table table-striped" *ngIf="etudiants">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Noms</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Matricule</th>
+                        <th scope="col">Téléphone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let e of etudiants._embedded.etudiants">
+                        <td>{{e.id}}</td>
+                        <td>{{e.nom}}</td>
+                        <td>{{e.prenom}}</td>
+                        <td>{{e.matricule}}</td>
+                        <td>{{e.telephone}}</td>
+                        <td>{{e.email}}</td>
+                        <td><a class="btn btn-danger" (click)="onDeleteEtudiant(e)">Supprimer</a></td>
+                        <td><a class="btn btn-success" (click)="onEditEtudiant(e)">Edit</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul *ngIf="pages" class="nav nav-pills">
+                <li [ngClass]="i==currentPage?'active':''" *ngFor="let p of pages; let i=index" class="clickable">
+                    <a (click)="onGetPages(i)">{{ i }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

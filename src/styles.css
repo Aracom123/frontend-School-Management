@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+
+@media(min-width: 768px) {
+    .sidebar-nav .navbar .navbar-collapse {
+        padding: 0;
+        max-height: none;
+    }
+    .sidebar-nav .navbar ul {
+        float: none;
+    }
+    .sidebar-nav .navbar ul:not {
+        display: block;
+    }
+    .sidebar-nav .navbar li {
+        float: none;
+        display: block;
+    }
+    .sidebar-nav .navbar li a {
+        padding-top: 12px;
+    }
+    .sidebar-nav {
+        padding-top: 0%;
+    }
+    #fixeNav {
+        margin-bottom: 0%;
+    }
+    .menu2 {
+        text-align: center;
+        margin-right: 35%;
+        margin-left: 35%;
+    }
+}

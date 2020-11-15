@@ -1,0 +1,4 @@
+<ul class="list-group" *ngIf="classes">
+    <li [ngClass]="currentClasse && currentClasse._links.self==c._links.self?'active':''" *ngFor="let c of classes._embedded.classes" class="list-group-item" style=" cursor:pointer" (click)="onGetEtudiants(c)">{{ c.libelle_classe }}
+    </li>
+</ul>

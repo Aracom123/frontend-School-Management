@@ -1,0 +1,108 @@
+<div class="panel panel-primary">
+    <div class="panel panel-heading">Gestion des classes</div>
+    <div class="panel-body">
+        <div>
+            <button class="btn btn-success" (click)="onNewClasses()">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+        <div *ngIf="mode=='new-classe'">
+            <form #f="ngForm" (ngSubmit)="onSaveClasse(f.value)">
+                <div class="form-group">
+                    <label class="control-label"> Nom</label>
+                    <input class="form-control" type="text" name="libelle_classe" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">filiere</label>
+                    <input class="form-control" type="text" name="filiere_id_filiere" ngModel>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Creer </label>
+                    <input class="form-control" type="date" name="created_at" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Modifier</label>
+                    <input class="form-control" type="date" name="modified_at" ngModel>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Creer Par</label>
+                    <input class="form-control" type="text" name="created_by_id" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Modifier Par</label>
+                    <input class="form-control" type="text" name="modified_by_id" ngModel>
+                </div>
+                <button class="btn btn-success" type="submit">Save</button>
+
+            </form>
+        </div>
+        <div *ngIf="mode=='edit-classe'">
+            <form #f="ngForm" (ngSubmit)="onUpdateClasse(f.value)">
+                <div class="form-group">
+                    <label class="control-label"> Nom</label>
+                    <input class="form-control" type="text" name="libelle_classe" ngModel [(ngModel)]="currentClasses.libelle_classe">
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">filiere</label>
+                    <input class="form-control" type="text" name="filiere_id_filiere" ngModel [(ngModel)]="currentClasses.filiere_id_filiere">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Creer </label>
+                    <input class="form-control" type="date" name="created_at" ngModel [(ngModel)]="currentClasses.created_at">
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Modifier</label>
+                    <input class="form-control" type="date" name="modified_at" ngModel [(ngModel)]="currentClasses.modified_at">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Creer Par</label>
+                    <input class="form-control" type="text" name="created_by_id" ngModel [(ngModel)]="currentClasses.created_by_id">
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Modifier Par</label>
+                    <input class="form-control" type="text" name="modified_by_id" ngModel [(ngModel)]="currentClasses.modified_by_id">
+                </div>
+                <button class="btn btn-success" type="submit">Update</button>
+
+            </form>
+        </div>
+        <div *ngIf="mode=='list'">
+            <table class="table table-striped" *ngIf="classes">
+                <thead>
+                    <tr>
+                        <th scope="col">Noms</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of classes._embedded.classes">
+
+                        <td>{{ c.libelle_classe }}</td>
+
+                        <td>
+                            <button class="btn btn-danger" (click)="onDeleteClasses(c)">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+
+                        </td>
+
+                        <td>
+                            <button class="btn btn-danger" (click)="onEditClasses(c)">
+                                <span class="glyphicon glyphicon-edit" ></span>
+                            </button>
+
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

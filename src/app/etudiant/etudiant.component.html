@@ -1,0 +1,22 @@
+<table class="table table-striped" *ngIf="etudiant">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Noms</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Matricule</th>
+            <th scope="col">Téléphone</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of etudiant._embedded.etudiants">
+            <td>{{e.id}}</td>
+            <td>{{e.nom}}</td>
+            <td>{{e.prenom}}</td>
+            <td>{{e.matricule}}</td>
+            <td>{{e.telephone}}</td>
+            <td>{{e.email}}</td>
+        </tr>
+    </tbody>
+</table>
